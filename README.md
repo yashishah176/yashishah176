@@ -138,13 +138,25 @@ The part I'm proudest of is how it was measured. I scored it with precision, rec
 
 [Explore the code in the repository](https://github.com/yashishah176/Guardrail-Eval)
 
-### 02. Last Minutes Deal · Internship
+### 02. Healix · AI patient navigation
+
+Getting care in India means three headaches: which doctor to see, how long you'll wait, and what your report actually says, often in a language you're not comfortable with. Healix answers all three in **English, Hindi, Marathi or Hinglish**. It's a team project, and I led the frontend.
+
+- **Voice in your language:** speech to text, read-aloud and translation through **Sarvam AI**, with the API key kept on the server and never sent to the browser.
+- **Care flow:** symptoms to the right kind of specialist and urgency (never a diagnosis), ranked doctors, a digital token with a predicted wait shown as a range with reasons, and a "leave home in 25 min" nudge.
+- **Reports in plain words:** upload a lab report, check the values it read, then see what each one means.
+- **Assistant:** answers grounded in health guidelines, plus a hospital dashboard and an emergency flow.
+- **Built to be tested:** a server with mock, local and live data modes, and about **600 automated tests**, including Playwright browser tests.
+
+**Stack:** React, TypeScript, Vite, Hono, Zod, Sarvam AI, Groq, Vitest, Playwright, Vercel. · [Try the live demo](https://healix-v4.vercel.app) · [Explore the code](https://github.com/yashishah176/healix-v4)
+
+### 03. Last Minutes Deal · Internship
 
 The customer website for a live booking platform, built during my internship at Twwios. It covers hotel, villa and buffet bookings from search to Cashfree payment, Google sign-in, multi-currency pricing and infinite scroll. The details are in the experience section above.
 
 **Stack:** React 19, Vite, Axios, Firebase Auth, Cashfree. · [Visit the live site](https://lastminutessdeal.com)
 
-### 03. AI Traffic System · In progress
+### 04. AI Traffic System · In progress
 
 I'm currently building an AI-based traffic system with [Akshat](https://github.com/AKSHAT200905). The idea is to detect traffic violations from camera footage and use what's happening on the road to help signals adapt. I'll add the repository here once it's ready.
 
