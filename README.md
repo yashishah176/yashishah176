@@ -6,6 +6,7 @@
   <a href="https://www.linkedin.com/in/shahyashi"><img src="https://img.shields.io/badge/LinkedIn-Yashi%20Shah-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:yashishah176@gmail.com"><img src="https://img.shields.io/badge/Email-Say%20hello-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://lastminutessdeal.com"><img src="https://img.shields.io/badge/Live-Last%20Minutes%20Deal-238636?style=for-the-badge&logo=react&logoColor=white" alt="Last Minutes Deal, a live site I worked on" /></a>
+  <a href="https://healix-v4.vercel.app"><img src="https://img.shields.io/badge/Live-Healix-0f766e?style=for-the-badge&logo=vercel&logoColor=white" alt="Healix live demo" /></a>
 </div>
 
 <br />
@@ -18,7 +19,7 @@ I'm Yashi, an Information Technology student at D. J. Sanghvi College of Enginee
 
 That question is what pulled me towards **agentic AI**. An agent that plans and calls tools is only as useful as it is trustworthy, so I'm most interested in the parts around the model: checking what it outputs, making sure its actions are allowed and verified, and keeping a record of what actually happened.
 
-At **Twwios Technologies** I worked as a full stack developer intern on a live booking platform, which taught me how much a small bug in a booking or payment flow matters to a real user. On my own, I built **SecureDrone**, where every drone command is signed and encrypted with post-quantum cryptography and checked by a Raspberry Pi on the drone itself, and **Guardrail Eval**, an evaluator that checks chatbot replies for risky content.
+At **Twwios Technologies** I worked as a full stack developer intern on a live booking platform, which taught me how much a small bug in a booking or payment flow matters to a real user. On my own, I built **SecureDrone**, where every drone command is signed and encrypted with post-quantum cryptography and checked by a Raspberry Pi on the drone itself, and **Guardrail Eval**, an evaluator that checks chatbot replies for risky content. With my team I built **Healix**, a health app that helps patients find the right doctor, time their visit and understand their reports in their own language, where I led the frontend.
 
 Outside code, I'll happily talk to anyone, which is probably why I enjoy committee work and hackathons so much. You'll also find me playing badminton or trying whatever new thing has caught my attention that week.
 
