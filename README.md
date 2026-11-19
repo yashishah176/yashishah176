@@ -18,7 +18,7 @@ I'm Yashi, an Information Technology student at D. J. Sanghvi College of Enginee
 
 That question is what pulled me towards **agentic AI**. An agent that plans and calls tools is only as useful as it is trustworthy, so I'm most interested in the parts around the model: checking what it outputs, making sure its actions are allowed and verified, and keeping a record of what actually happened.
 
-At **Twwios Technologies** I worked as a full stack developer intern on a live booking platform, which taught me how much a small bug in a booking or payment flow matters to a real user. On my own, I built **SecureDrone**, where every drone command is signed and encrypted with post-quantum cryptography, and **Guardrail Eval**, an evaluator that checks chatbot replies for risky content.
+At **Twwios Technologies** I worked as a full stack developer intern on a live booking platform, which taught me how much a small bug in a booking or payment flow matters to a real user. On my own, I built **SecureDrone**, where every drone command is signed and encrypted with post-quantum cryptography and checked by a Raspberry Pi on the drone itself, and **Guardrail Eval**, an evaluator that checks chatbot replies for risky content.
 
 Outside code, I'll happily talk to anyone, which is probably why I enjoy committee work and hackathons so much. You'll also find me playing badminton or trying whatever new thing has caught my attention that week.
 
@@ -86,16 +86,17 @@ Outside code, I'll happily talk to anyone, which is probably why I enjoy committ
 
 <div align="center">
   <a href="https://github.com/yashishah176/SecureDrone"><img src="https://img.shields.io/badge/OPEN%20SOURCE-SecureDrone-238636?style=for-the-badge&logo=github" alt="Open the SecureDrone repository" /></a>
-  <img src="https://img.shields.io/badge/33-pytest%20tests-2f81f7?style=for-the-badge&logo=pytest&logoColor=white" alt="33 pytest tests" />
+  <img src="https://img.shields.io/badge/65-pytest%20tests-2f81f7?style=for-the-badge&logo=pytest&logoColor=white" alt="65 pytest tests" />
+  <img src="https://img.shields.io/badge/REAL%20DRONE-Raspberry%20Pi%20%2B%20MAVLink-f97316?style=for-the-badge&logo=raspberrypi&logoColor=white" alt="Runs on a real drone with a Raspberry Pi and MAVLink" />
   <img src="https://img.shields.io/badge/NIST-FIPS%20203%20%2F%20204-7c3aed?style=for-the-badge" alt="NIST FIPS 203 and 204" />
 </div>
 
 **A drone controller that only obeys commands it can prove are real, even against a future quantum attacker.**
 
-A drone that accepts any command it receives is a drone anyone can fly. I wanted to see what it takes to make every single command verifiable, so each one is signed and encrypted with the new NIST post-quantum standards, and the drone checks it before it moves. To make sure the protection actually works, I also built an attack simulator into the app that tries to break it.
+A drone that accepts any command it receives is a drone anyone can fly. I wanted to see what it takes to make every single command verifiable, so each one is signed and encrypted with the new NIST post-quantum standards, and the drone checks it before it moves. It now runs on a real drone too: a Raspberry Pi 5 on the drone checks every command before passing it to the flight controller over MAVLink. To make sure the protection actually works, I built an attack simulator into the app, plus a separate attacker laptop that has no keys and tries to break it over the air.
 
 <div align="center">
-  <img src="./assets/securedrone-architecture.svg" width="100%" alt="SecureDrone architecture: command path through ML-KEM handshake, ML-DSA signature, AES-GCM encryption and drone checks, plus an attack simulator whose four attacks are blocked and logged" />
+  <img src="./assets/securedrone-architecture.svg" width="100%" alt="SecureDrone architecture: command path through ML-KEM handshake, ML-DSA signature, AES-GCM encryption and drone checks, a Raspberry Pi on the real drone, plus an attack simulator and an attacker laptop whose attacks are blocked and logged" />
 </div>
 
 ### How the system works
@@ -107,11 +108,15 @@ A drone that accepts any command it receives is a drone anyone can fly. I wanted
 | **Encryption** | The payload is encrypted with AES-256-GCM under the session key. | GCM both hides the command and detects if even one byte was changed. |
 | **Drone-side checks** | Four checks reject replayed, tampered, forged and stale commands. | Checking on the drone means a command is never trusted just because it reached the drone. |
 | **Attack simulator** | The app can fire all four attacks on demand. | It's easy to claim something is secure. Showing each attack being blocked is better proof. |
+| **Attacker laptop** | A second laptop with no keys sniffs the encrypted radio traffic and replays, tampers, forges or fakes a new handshake. | A real attacker sits outside the system, so the test should too. |
+| **Encryption OFF mode** | For a short window, commands go as plain text, and the attacker can hijack the drone with a fake LAND. | Showing what goes wrong without the protection makes it clear what the protection is doing. |
 | **Audit log** | Every blocked attack streams to a live log over WebSockets. | If something is attacked, you should be able to see it happen, not find out later. |
-| **One drone API** | A simulator and a real PX4 drone sit behind the same interface. | The security code is tested once and works for both. |
-| **Tests and speed** | 33 pytest tests run in GitHub Actions against the real liboqs library. The added cost is about 0.2 ms per command. | Security that slows a drone down won't get used, so I measured the overhead instead of guessing. |
+| **Real drone mode** | A Raspberry Pi 5 on the drone runs the four checks, talks MAVLink to a PX4 or ArduPilot flight controller and signs the telemetry it sends back. Pinned ML-DSA keys authenticate the handshake. | The checks have to run on the drone itself, not on a laptop that trusts the drone. |
+| **Safety limits** | The Pi refuses take-off above 10 m, without a GPS fix or below 30% battery, and sends the drone home if the ground station goes silent for 5 s. | A secure drone that crashes isn't secure. Even valid commands have to be safe. |
+| **One drone API** | The simulator and the real drone sit behind the same interface. | The security code is tested once and works for both. |
+| **Tests and speed** | 65 pytest tests run in GitHub Actions against the real liboqs library, including end-to-end tests of the real-drone link. The added cost is about 0.2 ms per command. | Security that slows a drone down won't get used, so I measured the overhead instead of guessing. |
 
-**Stack:** Python, FastAPI, React, TypeScript, liboqs, AES-256-GCM, WebSockets, pytest, GitHub Actions.
+**Stack:** Python, FastAPI, React, TypeScript, liboqs, AES-256-GCM, WebSockets, Raspberry Pi 5, MAVLink, Docker, pytest, GitHub Actions.
 
 [Explore the code in the repository](https://github.com/yashishah176/SecureDrone)
 
@@ -169,7 +174,7 @@ I'm currently building an AI-based traffic system with [Akshat](https://github.c
 ## 🛠️ Technical Skills
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=python,js,ts,java,c,react,fastapi,tailwind,vite,firebase,git,github,githubactions,linux,vscode,figma&theme=dark" alt="Technology icons for languages, frameworks and tools" />
+  <img src="https://skillicons.dev/icons?i=python,js,ts,java,c,react,fastapi,tailwind,vite,firebase,docker,raspberrypi,git,github,githubactions,linux,vscode,figma&theme=dark" alt="Technology icons for languages, frameworks and tools" />
 </div>
 
 | Area | Tools and concepts I've worked with |
@@ -179,7 +184,8 @@ I'm currently building an AI-based traffic system with [Akshat](https://github.c
 | **Backend** | FastAPI, Pydantic, REST APIs, WebSockets |
 | **AI and data** | LLM guardrails and evaluation, NumPy, Pandas, scikit-learn |
 | **Security** | Post-quantum cryptography (ML-KEM, ML-DSA), AES-GCM, replay and tamper protection |
-| **Tooling** | Git, GitHub Actions, pytest, Linux/WSL, VS Code, Figma |
+| **Hardware** | Raspberry Pi 5, MAVLink, PX4 and ArduPilot flight controllers |
+| **Tooling** | Git, GitHub Actions, Docker, pytest, Linux/WSL, VS Code, Figma |
 
 ---
 
