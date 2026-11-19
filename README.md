@@ -86,7 +86,7 @@ Outside code, I'll happily talk to anyone, which is probably why I enjoy committ
 ## 🚀 Featured Project: SecureDrone
 
 <div align="center">
-  <a href="https://github.com/yashishah176/SecureDrone"><img src="https://img.shields.io/badge/OPEN%20SOURCE-SecureDrone-238636?style=for-the-badge&logo=github" alt="Open the SecureDrone repository" /></a>
+  <img src="https://img.shields.io/badge/FLIGHT%20TESTED-Real%20Quadcopter-238636?style=for-the-badge&logo=github" alt="Flight tested on a real quadcopter" />
   <img src="https://img.shields.io/badge/65-pytest%20tests-2f81f7?style=for-the-badge&logo=pytest&logoColor=white" alt="65 pytest tests" />
   <img src="https://img.shields.io/badge/REAL%20DRONE-Raspberry%20Pi%20%2B%20MAVLink-f97316?style=for-the-badge&logo=raspberrypi&logoColor=white" alt="Runs on a real drone with a Raspberry Pi and MAVLink" />
   <img src="https://img.shields.io/badge/NIST-FIPS%20203%20%2F%20204-7c3aed?style=for-the-badge" alt="NIST FIPS 203 and 204" />
@@ -119,7 +119,7 @@ A drone that accepts any command it receives is a drone anyone can fly. I wanted
 
 **Stack:** Python, FastAPI, React, TypeScript, liboqs, AES-256-GCM, WebSockets, Raspberry Pi 5, MAVLink, Docker, pytest, GitHub Actions.
 
-[Explore the code in the repository](https://github.com/yashishah176/SecureDrone)
+Built with my IPD team: Dhruvi, Ashika and Vrushti, with help from Team Phoenix. The code is kept private, but I'm always happy to walk through it or show a live demo. [Email me](mailto:yashishah176@gmail.com) or reach out on [LinkedIn](https://www.linkedin.com/in/shahyashi).
 
 ---
 
